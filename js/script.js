@@ -1,4 +1,4 @@
-const apiKey = CONFIG.API_KEY;
+const apiKey = GOOGLE_BOOKS_API_KEY;
 
 //Declare a global variable
 let dataFromApi;
