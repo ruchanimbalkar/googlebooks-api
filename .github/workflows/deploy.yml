@@ -17,23 +17,16 @@ jobs:
       # This is the crucial step: Create a config.js file on the fly
       - name: Create config.js with API key
         run: |
-          # This line creates a file named 'config.js' in your 'public' folder (or wherever your JS lives)
-          # It puts a JavaScript variable definition inside it, using the secret value.
-          # Make sure the path 'public/config.js' matches where your index.html expects config.js
+          # IMPORTANT: Verify this path. If your index.html and app.js are in the ROOT,
+          # use 'config.js'. If they are in a folder named 'public', then use 'public/config.js'.
           echo "const GOOGLE_BOOKS_API_KEY = '${{ secrets.GOOGLE_BOOKS_API_KEY }}';" > config.js
-        # IMPORTANT: If your index.html and app.js are in a 'public' folder, use 'public/config.js'
-        # If they are directly in the root, use 'config.js' as shown above.
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build project
-        run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3 # A popular action for deploying to GH Pages
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }} # GitHub's auto-generated token for actions
           publish_dir: ./ # The directory to publish (e.g., your project's root)
-        # IMPORTANT: If your site files are in a 'build' or 'public' folder, change 'publish_dir' accordingly
-        # For a simple vanilla JS project, often './' is fine if index.html is in the root.
+        # IMPORTANT: If your site files are in a specific subfolder (like 'public' or 'dist'),
+        # change 'publish_dir' to that folder (e.g., 'publish_dir: ./public').
+        # For a simple vanilla JS project where index.html is in the root, './' is correct.
