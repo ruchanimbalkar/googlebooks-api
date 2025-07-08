@@ -1,0 +1,46 @@
+body {
+    background-color: #4285f4;
+    color: white;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .wrapper {
+    margin: 0 auto;
+    width: 600px;
+  }
+  form {
+    background-color: #f8f9fa;
+    border: 0.1rem solid #ea4335;
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+  label {
+    color: #4285f4;
+    font-weight: bold;
+  }
+  button {
+    background-color: #5f6368;
+    color: #34a853;
+    font-weight: bold;
+    border-radius: 0.3rem;
+    padding: 0.3rem;
+  }
+  
+  button:hover {
+    background-color: #4285f4;
+    color: #f8f9fa;
+  }
+  
+  img {
+    border: 0.1rem solid white;
+  }
+  .card {
+    background-color: #34a853;
+    border: 0.18rem solid #fbbc04;
+    padding: 1rem;
+    margin: 1rem;
+  }
+  
