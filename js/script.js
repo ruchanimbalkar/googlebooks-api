@@ -1,5 +1,8 @@
 const apiKey = GOOGLE_BOOKS_API_KEY;
-
+// if (!apiKey) {
+//   alert("API key is missing. Please check deployment config.");
+//   throw new Error("Missing API key. Aborting script.");
+// }
 //Declare a global variable
 let dataFromApi;
 const apiCall = (url) => {
