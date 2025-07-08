@@ -1,35 +1,29 @@
-# .github/workflows/deploy.yml
 name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main # This workflow runs when you push to the 'main' branch
+      - main
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest # The type of virtual machine to run the job on
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4 # Action to pull your repository code
+        uses: actions/checkout@v4
 
-      # This is the crucial step: Create a config.js file on the fly
       - name: Create config.js with API key
         run: |
-          # IMPORTANT: Verify this path. If your index.html and app.js are in the ROOT,
-          # use 'config.js'. If they are in a folder named 'public', then use 'public/config.js'.
           echo "const GOOGLE_BOOKS_API_KEY = '${{ secrets.GOOGLE_BOOKS_API_KEY }}';" > config.js
-          
-         # === ADD THIS NEW DEBUGGING STEP ===
+
       - name: Debug - List files after config.js creation
         run: ls -R
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3 # A popular action for deploying to GH Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }} # GitHub's auto-generated token for actions
-          publish_dir: ./ # The directory to publish (e.g., your project's root)
-        # IMPORTANT: If your site files are in a specific subfolder (like 'public' or 'dist'),
-        # change 'publish_dir' to that folder (e.g., 'publish_dir: ./public').
-        # For a simple vanilla JS project where index.html is in the root, './' is correct.
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./ # Change to ./public if that's where index.html lives
