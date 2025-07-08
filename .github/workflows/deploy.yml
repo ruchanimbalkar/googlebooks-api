@@ -20,7 +20,10 @@ jobs:
           # IMPORTANT: Verify this path. If your index.html and app.js are in the ROOT,
           # use 'config.js'. If they are in a folder named 'public', then use 'public/config.js'.
           echo "const GOOGLE_BOOKS_API_KEY = '${{ secrets.GOOGLE_BOOKS_API_KEY }}';" > config.js
-
+          
+         # === ADD THIS NEW DEBUGGING STEP ===
+      - name: Debug - List files after config.js creation
+        run: ls -R
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3 # A popular action for deploying to GH Pages
