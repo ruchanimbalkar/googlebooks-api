@@ -20,7 +20,7 @@ jobs:
           # This line creates a file named 'config.js' in your 'public' folder (or wherever your JS lives)
           # It puts a JavaScript variable definition inside it, using the secret value.
           # Make sure the path 'public/config.js' matches where your index.html expects config.js
-          echo "const GOOGLE_BOOKS_API_KEY = '${{ secrets.GOOGLE_BOOKS_API_KEY }}';" > public/config.js
+          echo "const GOOGLE_BOOKS_API_KEY = '${{ secrets.GOOGLE_BOOKS_API_KEY }}';" > config.js
         # IMPORTANT: If your index.html and app.js are in a 'public' folder, use 'public/config.js'
         # If they are directly in the root, use 'config.js' as shown above.
 
